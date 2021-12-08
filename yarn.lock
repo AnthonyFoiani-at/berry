@@ -4714,6 +4714,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/stream-buffers@npm:^3":
+  version: 3.0.4
+  resolution: "@types/stream-buffers@npm:3.0.4"
+  dependencies:
+    "@types/node": "*"
+  checksum: 5b432b2bf963d612747b79ac317562888236d6a9ea14414fb055c24e7be9643b5e3c7b7470841fa82802aa1c1c0d752a4ba935bbc0cfb12de6b89f7e1dadee92
+  languageName: node
+  linkType: hard
+
 "@types/tapable@npm:*":
   version: 1.0.4
   resolution: "@types/tapable@npm:1.0.4"
@@ -5570,6 +5579,7 @@ __metadata:
     "@types/micromatch": ^4.0.1
     "@types/node": ^13.7.0
     "@types/semver": ^7.1.0
+    "@types/stream-buffers": ^3
     "@types/tar": ^4.0.4
     "@types/treeify": ^1.0.0
     "@types/tunnel": ^0.0.0
@@ -5604,6 +5614,7 @@ __metadata:
     rollup-plugin-esbuild: ^3.0.2
     rollup-plugin-terser: ^7.0.2
     semver: ^7.1.2
+    stream-buffers: ^3.0.2
     stream-to-promise: ^2.2.0
     strip-ansi: ^6.0.0
     tar: ^6.0.5

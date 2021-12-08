@@ -8727,6 +8727,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/stream-buffers", [
+        ["npm:3.0.4", {
+          "packageLocation": "./.yarn/cache/@types-stream-buffers-npm-3.0.4-e672c88cb5-5b432b2bf9.zip/node_modules/@types/stream-buffers/",
+          "packageDependencies": [
+            ["@types/stream-buffers", "npm:3.0.4"],
+            ["@types/node", "npm:14.17.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/tapable", [
         ["npm:1.0.4", {
           "packageLocation": "./.yarn/cache/@types-tapable-npm-1.0.4-3ed5f6102e-64bcadad1e.zip/node_modules/@types/tapable/",
@@ -10585,6 +10595,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/micromatch", "npm:4.0.1"],
             ["@types/node", "npm:13.7.0"],
             ["@types/semver", "npm:7.1.0"],
+            ["@types/stream-buffers", "npm:3.0.4"],
             ["@types/tar", "npm:4.0.4"],
             ["@types/treeify", "npm:1.0.0"],
             ["@types/tunnel", "npm:0.0.0"],
@@ -10622,6 +10633,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup-plugin-esbuild", "virtual:16110bda3ce959c103b1979c5d750ceb8ac9cfbd2049c118b6278e46e65aa65fd17e71e04a0ce5f75b7ca3203efd8e9c9b03c948a76c7f4bca807539915b5cfc#npm:3.0.4"],
             ["rollup-plugin-terser", "virtual:712d04b0098634bdb13868ff8f85b327022bd7d3880873ada8c0ae56847ed36cf9da1fd74a88519380129cec528fe2bd2201426bc28ac9d4a8cc6734ff25c538#npm:7.0.2"],
             ["semver", "npm:7.3.5"],
+            ["stream-buffers", "npm:3.0.2"],
             ["stream-to-promise", "npm:2.2.0"],
             ["strip-ansi", "npm:6.0.1"],
             ["tar", "npm:6.0.5"],
