@@ -246,6 +246,11 @@ export const coreDefinitions: {[coreSettingName: string]: SettingsDefinition} = 
     default: !isCI && process.stdout.isTTY && process.stdout.columns > 22,
     defaultText: `<dynamic>`,
   },
+  reportCacheMissesOnlyOnce: {
+    description: `If true, the CLI will report each missing cache only once`,
+    type: SettingsType.BOOLEAN,
+    default: false,
+  },
   enableTimers: {
     description: `If true, the CLI is allowed to print the time spent executing commands`,
     type: SettingsType.BOOLEAN,
@@ -534,6 +539,7 @@ export interface ConfigurationValueMap {
   enableHyperlinks: boolean;
   enableInlineBuilds: boolean;
   enableProgressBars: boolean;
+  reportCacheMissesOnlyOnce: boolean;
   enableTimers: boolean;
   preferAggregateCacheInfo: boolean;
   preferInteractive: boolean;
@@ -906,6 +912,18 @@ export class Configuration {
 
     for (const [name, plugin] of plugins)
       configuration.activatePlugin(name, plugin);
+
+    return configuration;
+  }
+
+  /**
+   * Create a fake configuration for tests.
+   */
+  static async createFakePromise(): Promise<Configuration> {
+    const tempDir = await xfs.mktempPromise();
+    const configuration = new Configuration(tempDir);
+
+    configuration.importSettings(coreDefinitions);
 
     return configuration;
   }
