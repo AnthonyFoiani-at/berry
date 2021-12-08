@@ -155,6 +155,7 @@ export class StreamReport extends Report {
   private cacheHitCount: number = 0;
   private cacheMissCount: number = 0;
   private lastCacheMiss: Locator | null = null;
+  private reportedCacheMisses: Set<string> = new Set();
 
   private warningCount: number = 0;
   private errorCount: number = 0;
@@ -205,7 +206,7 @@ export class StreamReport extends Report {
 
     const styleName = this.configuration.get(`progressBarStyle`) || defaultStyle;
     if (!Object.prototype.hasOwnProperty.call(PROGRESS_STYLES, styleName))
-      throw new Error(`Assertion failed: Invalid progress bar style`);
+      throw new Error(`Assertion failed: Invalid progress bar style '${styleName}'`);
 
     this.progressStyle = PROGRESS_STYLES[styleName];
     const PAD_LEFT = `➤ YN0000: ┌ `.length;
@@ -231,7 +232,21 @@ export class StreamReport extends Report {
     this.cacheMissCount += 1;
 
     if (typeof message !== `undefined` && !this.configuration.get(`preferAggregateCacheInfo`)) {
-      this.reportInfo(MessageName.FETCH_NOT_CACHED, message);
+      let shouldReport = true;
+
+      if (this.configuration.get(`reportCacheMissesOnlyOnce`)) {
+        const key = [locator.scope, locator.name, locator.reference, message ?? ``].join(`|`);
+        // console.log(`key='${key}'`);
+        if (this.reportedCacheMisses.has(key)) {
+          shouldReport = false;
+        } else {
+          this.reportedCacheMisses.add(key);
+        }
+      }
+
+      if (shouldReport) {
+        this.reportInfo(MessageName.FETCH_NOT_CACHED, message);
+      }
     }
   }
 
